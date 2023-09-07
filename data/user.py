@@ -1,4 +1,7 @@
+import os
 from dataclasses import dataclass
+
+from config import ROOT_DIR
 
 
 @dataclass
@@ -30,7 +33,7 @@ ivan = User(
     year='2023',
     subjects=['Math', 'Commerce'],
     hobbies=['Reading', 'Music'],
-    image='resources/img.jpeg',
+    image=os.path.join(ROOT_DIR, 'tests/resources/img.jpeg'),
     address='г. Магадан, ул. Ленина 21-72',
     state='NCR',
     city='Delhi'

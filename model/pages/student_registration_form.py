@@ -1,5 +1,3 @@
-import os
-
 from selene import have
 from selene.support.shared import browser
 
@@ -46,7 +44,7 @@ class RegistrationPage:
             browser.element('#hobbiesWrapper').element(f'//*[contains(text(),"{hobby}")]').click()
 
     def upload_picture(self, path_to_img):
-        browser.element('#uploadPicture').send_keys(os.path.abspath(path_to_img))
+        browser.element('#uploadPicture').send_keys(path_to_img)
         pass
 
     def fill_address(self, address):
