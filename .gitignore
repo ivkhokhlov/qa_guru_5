@@ -161,3 +161,4 @@ cython_debug/
 
 tests/geckodriver.log
 tests/.pytest_cache
+.idea
