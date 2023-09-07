@@ -1,6 +1,10 @@
 import pytest
 from selene import browser
+import os
 
+
+WORK_DIR = os.path.dirname(os.path.abspath(__file__))
+RESOURCES_DIR = os.path.join(WORK_DIR, 'resources')
 
 @pytest.fixture(scope='function', autouse=True)
 def browser_management():

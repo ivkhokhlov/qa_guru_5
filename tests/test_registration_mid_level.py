@@ -1,4 +1,6 @@
 from model.pages.student_registration_form import RegistrationPage
+import os
+from conftest import RESOURCES_DIR
 
 
 def test_student_registration():
@@ -13,7 +15,7 @@ def test_student_registration():
     registration_page.fill_date_of_birth('07', '08', '2023')
     registration_page.fill_subjects('Math', 'Commerce')
     registration_page.choose_hobbies('Reading', 'Music')
-    registration_page.upload_picture('resources/img.jpeg')
+    registration_page.upload_picture(os.path.join(RESOURCES_DIR, 'img.jpeg'))
     registration_page.fill_address('г. Магадан, ул. Ленина 21-72')
     registration_page.fill_state('NCR')
     registration_page.fill_city('Delhi')
