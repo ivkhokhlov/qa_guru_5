@@ -3,6 +3,8 @@ import os
 from selene import have
 from selene.support.shared import browser
 
+from data.user import User
+
 
 class RegistrationPage:
 
@@ -67,17 +69,30 @@ class RegistrationPage:
         browser.element('#submit').submit()
         pass
 
-    def should_have_registered(self, full_name, email, gender, mobile, birthday, subjects: list, hobbies: list, address,
-                               city, state):
+    def should_have_registered(self, user: User):
         browser.element('.modal-header').should(have.text('Thanks for submitting the form'))
-        browser.element('.table').should(have.text(full_name
-                                                   and email
-                                                   and gender
-                                                   and mobile
-                                                   and birthday
-                                                   and ', '.join(subjects)
-                                                   and ', '.join(hobbies)
-                                                   and address
-                                                   and state
-                                                   and city))
-        pass
+        browser.element('.table').should(have.text(f'{user.first_name} {user.last_name}'
+                                                   and user.email
+                                                   and user.gender
+                                                   and user.mobile
+                                                   and ', '.join(user.subjects)
+                                                   and ', '.join(user.hobbies)
+                                                   and user.address
+                                                   and user.state
+                                                   and user.city))
+
+    def register(self, user: User):
+        self.open()
+        self.fill_first_name(user.first_name)
+        self.fill_last_name(user.last_name)
+        self.fill_email(user.email)
+        self.choose_gender(user.gender)
+        self.fill_number(user.mobile)
+        self.fill_date_of_birth(user.day, user.month, user.year)
+        self.fill_subjects(*user.subjects)
+        self.choose_hobbies(*user.hobbies)
+        self.upload_picture(user.image)
+        self.fill_address(user.address)
+        self.fill_state(user.state)
+        self.fill_city(user.city)
+        return self
