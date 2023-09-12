@@ -10,8 +10,9 @@ packages = [{include = "qa_guru_5"}]
 python = "^3.11"
 pytest = "^7.4.0"
 selene = "2.0.0rc4"
-faker = "^19.3.0"
 pillow = "^10.0.0"
+allure-pytest = "^2.13.2"
+
 
 
 [build-system]
